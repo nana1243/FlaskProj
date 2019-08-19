@@ -5,9 +5,9 @@ def get_connection():
     conn = pymysql.connect(
         host='127.0.0.1',
         user = 'root',
-        password = '1243', #자기 my sql 비번
-        db='conv_db', #쓸 데이터베이스이름입력
-        charset='utf8') # 이거 다른지도 체크
+        password = '1234',
+        db='conv_db',
+        charset='utf8')
 
     return conn
 
@@ -15,7 +15,7 @@ def get_connection():
 
 
 
-def get_oneplusone_list(df_name_oneplusone):
+def get_oneplusone_list(df_name_oneplusone, page):
 
     # 데이타베이스 접속함수 호출
     conn = get_connection()
@@ -24,7 +24,7 @@ def get_oneplusone_list(df_name_oneplusone):
     cursor = conn.cursor()
 
     # 쿼리문 생성
-    sql = 'SELECT 품명, 가격, `index` as img FROM ' + df_name_oneplusone
+    sql = 'SELECT 품명, 가격, `index` as img FROM ' + df_name_oneplusone + ' LIMIT 0,20'
     cursor.execute(sql)
 
     # 리스트 생성
@@ -36,6 +36,7 @@ def get_oneplusone_list(df_name_oneplusone):
 
     return oneplusone_list
 
+get_oneplusone_list('df_cu_oneplusone',1)
 
 def get_twoplusone_list(df_name_twoplusone):
 
@@ -124,5 +125,4 @@ def get_discount_list(df_name_discount):
     conn.close()
 
     return discount_list
-
 

@@ -23,19 +23,6 @@ def cu_oneplusone_list(page):
     data="cu"
     return render_template('oneplusone_list_new4.html', oneplusone_list=oneplusone_list, num=num, data="cu")
 
-@app.route('/cu_oneplusone/<int:page>', methods=['GET'])
-def pagination(page):
-    page = page
-    per_page = 5
-    users = db.sql.paginate(page,per_page,error_out=False)
-    return render_template("oneplusone_list_new4.html", users=users)
-
-
-
-
-
-
-
 @app.route('/mini_oneplusone')
 def ministop_oneplusone_list():
     data = ministop

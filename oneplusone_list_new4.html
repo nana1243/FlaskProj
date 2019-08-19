@@ -7,35 +7,56 @@
     <script src="../static/js/jquery.min.js"></script>
     <script src="../static/js/bootstrap.min.js"></script>
 
+    <style>
+    .pagination-page-info {
+        padding: .6em;
+        padding-left: 0;
+        width: 40em;
+        margin: .5em;
+        margin-left: 0;
+        font-size: 12px;
+    }
+    .pagination-page-info b {
+        color: black;
+        background: #6aa6ed;
+        padding-left: 2px;
+        padding: .1em .25em;
+        font-size: 150%;
+    }
+    </style>
+
 </head>
 <body>
-    <div class="event_plus_list">
 
-    <h1>1+1</h1>
-    <hr>
-    <div class="row-fluid">
-        <div class="span2">
-            <ul class="list-group">
-            <!--  제목 용도 -->
-                <li class="list-group-item  list-group-item-danger">
-                    <span>img</span>
-                    <span>품명</span>
-                    <span>가격</span>
-                </li>
+<div class="container">
+    <div class="row">
+        {% for i in range(0,num)%}
+        <div class="col-xs-6 col-sm-3">
 
-                <div class="row">
-                    {% for i in oneplusone_list %}
-                    <div class="col-xs-6 col-sm-3">
-                        <div>
-                            {{ i }}
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </ul>
+            <div><img src="../static/image/data/{{ oneplusone_list[i][2] }}.png"  width="150px" height="150px" class="img-thumbnail"></div>
+
+            <div>{{ oneplusone_list[i][0] }}</div>
+
+            <div>{{ oneplusone_list[i][1] }}</div>
         </div>
+        {% endfor %}
     </div>
 </div>
+
+
+<div class="text-center">
+    <ul class="pagination">
+        <li class="page-item active"><a href="/cu_oneplusone/1">1</a></li>
+        <li class="page-item"><a href="/cu_oneplusone/2">2</a></li>
+        <li class="page-item"><a href="/cu_oneplusone/3">3</a></li>
+        <li class="page-item"><a href="/cu_oneplusone/4">4</a></li>
+        <li class="page-item"><a href="/cu_oneplusone/5">5</a></li>
+
+    </ul>
+</div>
+
+
+
 
 </body>
 </html>
