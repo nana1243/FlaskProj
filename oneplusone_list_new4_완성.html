@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>oneplusone_list</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+
+    <style>
+    .pagination-page-info {
+        padding: .6em;
+        padding-left: 0;
+        width: 40em;
+        margin: .5em;
+        margin-left: 0;
+        font-size: 12px;
+    }
+    .pagination-page-info b {
+        color: black;
+        background: #6aa6ed;
+        padding-left: 2px;
+        padding: .1em .25em;
+        font-size: 150%;
+    }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        {% for item in oneplusone_list %}
+        <div class="col-xs-6 col-sm-3">
+
+
+            <div><img src="../static/image/{{data}}/{{ item[2] }}.png"  width="150px" height="150px" class="img-thumbnail"></div>
+
+            <div>{{ item[0] }}</div>
+
+            <div>{{ item[1] }}</div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+<div class="text-center">
+    <ul class="pagination">
+        {% for i  in range(1, pagenum) %}
+            {% if i == curpage %}
+                <li class="page-item active"><a href="/cu_oneplusone/{{i}}" class="btn btn-primary btn-lg active"><em>{{i}}</em></a></li>
+            {% else %}
+                <li class="page-item"><a href="/cu_oneplusone/{{i}}" class="btn btn-primary btn-lg active"><em>{{i}}</em></a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+
+
+
+
+</body>
+</html>
