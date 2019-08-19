@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>oneplusone_list</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div class="event_plus_list">
+
+    <h1>1+1</h1>
+    <hr>
+    <div class="row-fluid">
+        <div class="span2">
+            <ul class="list-group">
+            <!--  제목 용도 -->
+                <li class="list-group-item  list-group-item-danger">
+                    <span>img</span>
+                    <span>품명</span>
+                    <span>가격</span>
+                </li>
+
+                <div class="row">
+                    {% for i in oneplusone_list %}
+                    <div class="col-xs-6 col-sm-3">
+                        <div>
+                            {{ i }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
