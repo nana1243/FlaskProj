@@ -22,12 +22,12 @@ def get_oneplusone_list(df_name_oneplusone, page):
 
     # 작업변수 생성
     cursor = conn.cursor()
-
-    # 쿼리문 생성
-    sql = 'SELECT 품명, 가격, `index` as img FROM ' + df_name_oneplusone + ' LIMIT 0,20'
+    print(page)
+    page=(int(page)-1)*20
+    page = str(page)
+    sql = 'SELECT 품명, 가격, `index` as img FROM ' + df_name_oneplusone + ' LIMIT '+ page + ',20';
+    print(sql)
     cursor.execute(sql)
-
-    # 리스트 생성
     oneplusone_list= cursor.fetchall()
     print(oneplusone_list)
 
@@ -36,7 +36,22 @@ def get_oneplusone_list(df_name_oneplusone, page):
 
     return oneplusone_list
 
-get_oneplusone_list('df_cu_oneplusone',1)
+def get_oneplusone_list_totCnt(df_name_oneplusone):
+
+    # 데이타베이스 접속함수 호출
+    conn = get_connection()
+
+    # 작업변수 생성
+    cursor = conn.cursor()
+    sql = 'SELECT count(*) FROM ' + df_name_oneplusone ;
+    cursor.execute(sql)
+    totCnt= cursor.fetchone()
+    print(totCnt[0])
+
+    # 데이타베이스 종료
+    conn.close()
+
+    return int(totCnt[0])
 
 def get_twoplusone_list(df_name_twoplusone):
 

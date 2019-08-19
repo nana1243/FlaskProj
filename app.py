@@ -16,12 +16,14 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/cu_oneplusone/<int:page>', methods=['GET'], defaults={"page": 1})
+@app.route('/cu_oneplusone/<int:page>', methods=['GET'])
 def cu_oneplusone_list(page):
+    print(page)
+    data = "cu"
     oneplusone_list= db.get_oneplusone_list('df_cu_oneplusone', page)
-    num=len(oneplusone_list)
-    data="cu"
-    return render_template('oneplusone_list_new4.html', oneplusone_list=oneplusone_list, num=num, data="cu")
+    num = db.get_oneplusone_list_totCnt('df_cu_oneplusone')
+    pagenum= (num//20)+2
+    return render_template('oneplusone_list_new4.html', oneplusone_list=oneplusone_list, num=num, pagenum=pagenum, curpage=page, data=data)
 
 @app.route('/mini_oneplusone')
 def ministop_oneplusone_list():
