@@ -30,14 +30,15 @@
 
 <div class="container">
     <div class="row">
-        {% for i in range(0,num)%}
+        {% for item in oneplusone_list %}
         <div class="col-xs-6 col-sm-3">
 
-            <div><img src="../static/image/data/{{ oneplusone_list[i][2] }}.png"  width="150px" height="150px" class="img-thumbnail"></div>
 
-            <div>{{ oneplusone_list[i][0] }}</div>
+            <div><img src="../static/image/{{data}}/oneplusone/{{ item[2] }}.png"  width="150px" height="150px" class="img-thumbnail"></div>
 
-            <div>{{ oneplusone_list[i][1] }}</div>
+            <div>{{ item[0] }}</div>
+
+            <div>{{ item[1] }}</div>
         </div>
         {% endfor %}
     </div>
@@ -46,12 +47,13 @@
 
 <div class="text-center">
     <ul class="pagination">
-        <li class="page-item active"><a href="/cu_oneplusone/1">1</a></li>
-        <li class="page-item"><a href="/cu_oneplusone/2">2</a></li>
-        <li class="page-item"><a href="/cu_oneplusone/3">3</a></li>
-        <li class="page-item"><a href="/cu_oneplusone/4">4</a></li>
-        <li class="page-item"><a href="/cu_oneplusone/5">5</a></li>
-
+        {% for i  in range(1, pagenum) %}
+            {% if i == curpage %}
+                <li class="page-item active"><a href="/cu_oneplusone/{{i}}" class="btn btn-primary btn-lg active"><em>{{i}}</em></a></li>
+            {% else %}
+                <li class="page-item"><a href="/cu_oneplusone/{{i}}" class="btn btn-primary btn-lg active"><em>{{i}}</em></a></li>
+            {% endif %}
+        {% endfor %}
     </ul>
 </div>
 
