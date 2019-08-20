@@ -3,15 +3,17 @@ import pymysql
 # 데이타베이스 접속 함수
 def get_connection():
     conn = pymysql.connect(
-        host='127.0.0.1',
+        host='database-1.cb6f1qkai8d4.us-east-2.rds.amazonaws.com',
         user = 'root',
-        password = '1234',
-        db='conv_db',
-        charset='utf8')
+        password = '12341234', #자기 my sql 비번
+        db='conv_db', #쓸 데이터베이스이름입력
+        charset='utf8') # 이거 다른지도 체크
 
     return conn
 
 # 레코드를 출력하는 함수
+
+
 
 
 
@@ -141,3 +143,39 @@ def get_discount_list(df_name_discount):
 
     return discount_list
 
+
+def get_board_list() :
+
+    conn = get_connection()
+
+    cursor = conn.cursor()
+
+    sql = '''SELECT *
+                FROM flask_db.board ORDER BY id DESC'''
+
+    cursor.execute(sql)
+
+    # 리스트 생성
+    board_list = cursor.fetchall()
+
+    # 데이타베이스 종료
+    conn.close()
+
+    return board_list
+
+
+def addDb_board(a_title, a_content, a_writer):
+    sql = '''
+            insert into flask_db.board
+                (title, content, writer, date, views)
+                values (%s, %s, %s, curdate(), 0)
+            '''
+    # 데이타베이스 접속함수 호출
+    conn = get_connection()
+
+    # 작업변수 생성
+    cursor = conn.cursor()
+    cursor.execute(sql, (a_title, a_writer))
+    conn.commit()
+
+    conn.close()
