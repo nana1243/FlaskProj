@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
 
-    <title>편의점 테스트 </title>
+    <title>CU 2+1</title>
     <!-- 부트스트랩 연동 -->
     <link rel="stylesheet" href="static/css/bootstrap.min.css">
     <link rel="stylesheet" href="static/css/style.css" media="all"/>
@@ -23,21 +23,35 @@
  #conv_list { width:1000px; height: 1000px; border-radius:20px; padding-top:200px; margin:20px auto}
  #conv_list img { display: inline-block; width:100px ; height:100px; border-radius:20px; margin:10px auto }
  #search { padding-left : 880px }
- #myCarousel { width:600px padding-left:0px }
- #myCarousel-inner { padding-left:320px }
  #control { padding-left:300px }
  #foo3_pag { padding-left:160px }
  #event { width:100px }
  #store { width:100px }
+
+     .pagination-page-info {
+        padding: .6em;
+        padding-left: 0;
+        width: 40em;
+        margin: .5em;
+        margin-left: 0;
+        font-size: 12px;
+    }
+    .pagination-page-info b {
+        color: black;
+        background: #6aa6ed;
+        padding-left: 2px;
+        padding: .1em .25em;
+        font-size: 150%;
+    }
     </style>
 <body>
 <div class="container">
-<!--    <div class="row">-->
+    <div class="row">
         <div id="title">
-            <h1>편의점</h1>
+            <h1>CU</h1>
             <div id="search">
                 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-                    <form class="form-inline" action="/search_list" novalidate autocomplete="off" method='GET'>
+                    <form class="form-inline" action="/search_cu_list2" novalidate autocomplete="off" method='GET'>
 <!--                        <div class="form-row form-group">-->
 <!--                            <div class="col">-->
 <!--                                <label for="event">행사종류</label>-->
@@ -67,6 +81,7 @@
                 </nav>
             </div>
         </div>
+    </div>
         <hr>
         <ul class="nav nav-pills nav-justified">
           <li class="active">
@@ -79,74 +94,39 @@
                   <li><a href="/cu_oneplusone">CU</a></li>
                   <li><a href="/gs25">GS25</a></li>
                   <li><a href="/emart24">emart24</a></li>
-                  <li><a href="/seven_oneplusone">7eleven</a></li>
+                  <li><a href="/7eleven">7eleven</a></li>
                   <li><a href="/ministop">ministop</a></li>
               </ul>
           </li>
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">행사별
-                    <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">1+1</a></li>
-                    <li><a href="#">2+1</a></li>
-                    <li><a href="#">3+1</a></li>
-                    <li><a href="#">세일상품</a></li>
-                    <li><a href="#">덤증정상품</a></li>
-                </ul>
-            </li>
             <li><a href="#">위치서비스</a></li>
             <li><a href="#">게시판</a></li>
         </ul>
         <hr>
-<!--        <form method="get" action="/search/" class="mt-2" novalidate autocomplete="off">-->
-<!--            <div class="form-row form-group">-->
-<!--                <div class="col">-->
-<!--                    <select name="event_type" class="form-control" id="id_event_type">-->
-<!--                        <option value selected>전체</option>-->
-<!--                        <option value="1">1+1</option>-->
-<!--                        <option value="1">2+1</option>-->
-<!--                        <option value="1">3+1</option>-->
-<!--                    </select>-->
-<!--                </div>-->
-<!--                <div class="col">-->
-<!--                    <select name="store" class="form-control" id="store">-->
-<!--                        <option value selected>전체</option>-->
-<!--                        <option value="1">cu</option>-->
-<!--                        <option value="1">gs25</option>-->
-<!--                        <option value="1">emart24</option>-->
-<!--                        <option value="1">7eleven</option>-->
-<!--                        <option value="1">ministop</option>-->
-<!--                    </select>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </form>-->
-    </div>
+
+        <ul class="nav nav-pills nav-justified">
+          <li class="active">
+              <a href="/cu_oneplusone">1+1</a>
+          </li>
+            <li class="active">
+              <a href="/cu_twoplusone">2+1</a>
+          </li>
+            <li class="active">
+              <a href="/cu_threeplusone">3+1</a>
+          </li>
+            <li class="active">
+              <a href="/cu_dum">증정상품</a>
+          </li>
+
+        </ul>
+        {% for item in productList %}
+        <div class="col-xs-6 col-sm-3">
+            <div><img src="{{ item[3] }}"  width="150px" height="150px" class="img-thumbnail"></div>
+            <div>{{ item[1] }}</div>
+            <div>{{ item[2] }}</div>
+        </div>
+        {% endfor %}
 
 
-    <div class="freshdesignweb">
-        <article class="grid_3 carousel-article">
-            <div style="display: block; text-align: start; position: relative; top: auto; right: auto; bottom: auto; left: auto; width: 350px; height: 300px; margin: 0px; overflow: hidden;" class="caroufredsel_wrapper">
-                <ul style="text-align: left; float: none; position: absolute; top: 0px; right: auto; bottom: auto; left: 0px; margin: 0px; width: 1500px; height: 300px; list-style:none;" id="foo3" class="carousel-li">
-                    <li><img src="../static/images/cu.png" alt="cu" width="350"></li>
-                    <li><img src="../static/images/gs.png" alt="gs" width="350"></li>
-                    <li><img src="../static/images/emart.png" alt="emart" width="350"></li>
-                    <li><img src="../static/images/seven.png" alt="seven" width="350"></li>
-                    <li><img src="../static/images/ministop.png" alt="ministop" width="350"></li>
-                </ul>
-            </div>
-            <div class="clearfix"></div>
-            <div style="display: block;" id="foo3_pag" class="carousel-pagination">
-                <a class="selected" href="#"><span>1</span></a>
-                <a class="" href="#"><span>2</span></a>
-                <a class="" href="#"><span>3</span></a>
-                <a class="" href="#"><span>4</span></a>
-                <a class="" href="#"><span>5</span></a>
-            </div>
-
-        </article><!-- slider text article end -->
-        <script>$("#foo3").carouFredSel({items:1,auto:true,scroll:1,pagination:"#foo3_pag"});</script>
-    </div>
-</div>
 
     <br><br>
 </div>
