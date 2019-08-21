@@ -24,25 +24,53 @@
         font-size: 150%;
     }
     </style>
-
+    <script>
+        function modal_view(data,img,title,price){
+            var imgSrc = "../static/image/" + data + "/oneplusone/" + img + ".jpg";
+            $("#myModal").on("show.bs.modal",function(event) {
+                $(".modal-body #prodImg").attr("src", imgSrc)
+                $(".modal-body #title").text(title);
+                $(".modal-body #price").text(price);
+            })
+        }
+    </script>
 </head>
 <body>
-
 <div class="container">
     <div class="row">
         {% for item in oneplusone_list %}
         <div class="col-xs-6 col-sm-3">
-
-
-            <div><img src="../static/image/{{data}}/oneplusone/{{ item[2] }}.png"  width="150px" height="150px" class="img-thumbnail"></div>
-
+            <a href="#" data-toggle="modal" data-target="#myModal">
+                <img src="../static/image/{{data}}/oneplusone/{{item[2]}}.jpg"  width="150px" height="150px" class="img-thumbnail"
+                     onclick="modal_view('{{data}}','{{item[2]}}','{{ item[0] }}','{{ item[1] }}');">
+            </a>
             <div>{{ item[0] }}</div>
-
             <div>{{ item[1] }}</div>
         </div>
         {% endfor %}
     </div>
 </div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"></h4>
+      </div>
+      <div class="modal-body">
+
+          <div><p align="center"><img id="prodImg"></p></div>
+          <div><h2><p align="center"><label id="title"/></p></h2></div>
+          <div><h4><p align="center" class="text-primary"><label id="price"/></p></h4></div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 <div class="text-center">
