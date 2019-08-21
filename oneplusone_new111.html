@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>oneplusone_list</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+
+    <style>
+    .pagination-page-info {
+        padding: .6em;
+        padding-left: 0;
+        width: 40em;
+        margin: .5em;
+        margin-left: 0;
+        font-size: 12px;
+    }
+    .pagination-page-info b {
+        color: black;
+        background: #6aa6ed;
+        padding-left: 2px;
+        padding: .1em .25em;
+        font-size: 150%;
+    }
+    </style>
+    <script>
+        function modal_view(data,img,title,price){
+            var imgSrc = img;
+            $("#myModal").on("show.bs.modal",function(event) {
+                $(".modal-body #prodImg").attr("src", imgSrc)
+                $(".modal-body #title").text(title);
+                $(".modal-body #price").text(price);
+            })
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div id="search">
+                <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                    <form class="form-inline" action="/search_list" novalidate autocomplete="off" method='GET'>
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" name="searchProduct">
+                        <input class="btn btn-info" id="bts" type="submit" value="검색">
+                    </form>
+                </nav>
+            </div>
+
+        <hr>
+        <ul class="nav nav-pills nav-justified">
+          <li class="active">
+              <a href="/">Home</a>
+          </li>
+          <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">편의점별
+                  <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                  <li><a href="/cu_oneplusone/1">CU</a></li>
+                  <li><a href="/gs25_oneplusone/1">GS25</a></li>
+                  <li><a href="/emart24_oneplusone/1">emart24</a></li>
+                  <li><a href="/seven_oneplusone/1">7eleven</a></li>
+                  <li><a href="/ministop_oneplusone/1">ministop</a></li>
+              </ul>
+          </li>
+            <li><a href="#">위치서비스</a></li>
+            <li><a href="#">게시판</a></li>
+        </ul>
+        <hr>
+        <ul class="nav nav-pills nav-justified">
+            {% if conv_name=="7eleven" %}
+             {}
+
+
+            <li class="active">
+              <a href="/{{data}}/1">1+1</a>
+          </li>
+            <li class="active">
+              <a href="/cu_twoplusone/1">2+1</a>
+          </li>
+            <li class="active">
+              <a href="/cu_threeplusone/1">3+1</a>
+          </li>
+            <li class="active">
+              <a href="/cu_dum/1">증정상품</a>
+          </li>
+
+            <li class="active">
+              <a href="/cu_dum/1">할인상품</a>
+          </li>
+
+            {% endif %}
+        </ul>
+
+
+        {% for item in oneplusone_list %}
+        <div class="col-xs-6 col-sm-3">
+            <a href="#" data-toggle="modal" data-target="#myModal">
+                <img src="{{item[2]}}"  width="150px" height="150px" class="img-thumbnail"
+                     onclick="modal_view('{{data}}','{{item[2]}}','{{ item[0] }}','{{ item[1] }}');">
+            </a>
+            <div>{{ item[0] }}</div>
+            <div>{{ item[1] }}</div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"></h4>
+      </div>
+      <div class="modal-body">
+
+          <div><p align="center"><img id="prodImg"></p></div>
+          <div><h2><p align="center"><label id="title"/></p></h2></div>
+          <div><h4><p align="center" class="text-primary"><label id="price"/></p></h4></div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="text-center">
+    <ul class="pagination">
+        {% for i  in range(1, pagenum) %}
+            {% if i == curpage %}
+                <li class="page-item active"><a href="/{{data}}/{{i}}" class="btn btn-primary btn-lg active"><em>{{i}}</em></a></li>
+            {% else %}
+                <li class="page-item"><a href="/{{data}}/{{i}}" class="btn btn-primary btn-lg active"><em>{{i}}</em></a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+
+
+
+
+</body>
+</html>
