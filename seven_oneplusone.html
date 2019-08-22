@@ -40,18 +40,20 @@
 {% block contents %}
     <ul class="nav nav-pills nav-justified" id="event-type">
       <li class="{% if active=='seven_oneplusone' %}active{%endif %}"><a href="/seven_oneplusone/">1+1</a></li>
-      <li class="{% if active=='seven_twoplusone' %}active{%endif %}"><a href="/seven_twoplusone/">2+1</a></li>
-      <li class="{% if active=='seven_threeplusone' %}active{%endif %}"><a href="/seven_threeplusone/">3+1</a></li>
-      <li class="{% if active=='seven_discount' %}active{%endif %}"><a href="/seven_discount/">할인행사</a></li>
-      <li class="{% if active=='seven_dum' %}active{%endif %}"><a href="/seven_dum/">증정행사</a></li>
+      <li class="{% if active=='#' %}active{%endif %}"><a href="#">2+1</a></li>
+      <li class="{% if active=='#' %}active{%endif %}"><a href="#">3+1</a></li>
+      <li class="{% if active=='#' %}active{%endif %}"><a href="#">할인행사</a></li>
+      <li class="{% if active=='#' %}active{%endif %}"><a href="#">증정행사</a></li>
 
     </ul>
 <br>
 <hr>
 
+{% if num == 0 %}
+ {{message}}
 
-
-
+{% else %}
+ {{message}}
 <div class="container">
     <div class="row">
         {% for item in oneplusone_list %}
@@ -81,7 +83,7 @@
         {% endfor %}
     </ul>
 </div>
-
+{% endif %}
 
 
 
