@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+    <title>편의점 테스트 </title>
+    <!-- 부트스트랩 연동 -->
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/style.css" media="all"/>
+
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/caroufredsel-carousel.js"></script>
+    <script src="../static/js/jquery-tweetscroll.js"></script>
+</head>
+    <style>
+ #title { padding-top:30px; }
+ #search { padding-left : 880px }
+ #myCarousel { width:600px padding-left:0px }
+ #myCarousel-inner { padding-left:320px }
+ #control { padding-left:300px }
+ #foo3_pag { padding-left:160px }
+ #event { width:100px }
+ #store { width:100px }
+ #logo { padding-left:50px; padding-top:80px }
+    </style>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="container">
+            <div id="logo">
+                <a href="/">
+                    <img src="../static/image/kong/home1.png" alt="home" width="120">
+                </a>
+            </div>
+            <div id="search">
+                <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                    <form class="form-inline" action="/search_list" novalidate autocomplete="off" method='GET'>
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" name="searchProduct">
+                        <input class="btn btn-info" id="bts" type="submit" value="검색">
+                    </form>
+                </nav>
+            </div>
+        </div>
+        <hr>
+        <ul class="nav nav-pills nav-justified">
+          <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">편의점별
+                  <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                  <li><a href="/cu_oneplusone/1"><p>CU</p></a></li>
+                  <li><a href="/gs25_oneplusone/1"><p>GS25</p></a></li>
+                  <li><a href="/emart24_oneplusone/1"><p>Emart24</p></a></li>
+                  <li><a href="/seven_oneplusone/1"><p>7eleven</p></a></li>
+                  <li><a href="/ministop_oneplusone/1"><p>Ministop</p></a></li>
+              </ul>
+          </li>
+            <li><a href="/location_service"><p>위치서비스</p></a></li>
+            <li><a href="/board"><p>게시판</p></a></li>
+        </ul>
+        <hr>
+
+    </div>
+
+
+    <div class="freshdesignweb">
+        <article class="grid_3 carousel-article">
+            <div style="display: block; text-align: start; position: relative; top: auto; right: auto; bottom: auto; left: auto; width: 350px; height: 300px; margin: 0px; overflow: hidden;" class="caroufredsel_wrapper">
+                <ul style="text-align: left; float: none; position: absolute; top: 0px; right: auto; bottom: auto; left: 0px; margin: 0px; width: 1500px; height: 300px; list-style:none;" id="foo3" class="carousel-li">
+                    <li>
+                        <a href="http://cu.bgfretail.com/index.do">
+                            <img src="../static/image/logo/cu.png" alt="cu" width="350">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://gs25.gsretail.com">
+                            <img src="../static/image/logo/gs.png" alt="gs" width="350">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.emart24.co.kr/index.asp">
+                            <img src="../static/image/logo/emart.png" alt="emart" width="350">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.7-eleven.co.kr">
+                            <img src="../static/image/logo/seven.png" alt="seven" width="350">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.ministop.co.kr/">
+                            <img src="../static/image/logo/ministop.png" alt="ministop" width="350">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+            <div style="display: block;" id="foo3_pag" class="carousel-pagination">
+                <a class="selected" href="#"><span>1</span></a>
+                <a class="" href="#"><span>2</span></a>
+                <a class="" href="#"><span>3</span></a>
+                <a class="" href="#"><span>4</span></a>
+                <a class="" href="#"><span>5</span></a>
+            </div>
+
+        </article><!-- slider text article end -->
+        <script>$("#foo3").carouFredSel({items:1,auto:true,scroll:1,pagination:"#foo3_pag"});</script>
+    </div>
+</div>
+
+    <br><br>
+</body>
+</html>

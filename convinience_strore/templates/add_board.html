@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>oneplusone_list</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap&subset=korean" rel="stylesheet">
+
+    <style>
+    .pagination-page-info {
+        padding: .6em;
+        padding-left: 0;
+        width: 40em;
+        margin: .5em;
+        margin-left: 0;
+        font-size: 12px;
+    }
+    .pagination-page-info b {
+        color: black;
+        background: #6aa6ed;
+        padding-left: 2px;
+        padding: .1em .25em;
+        font-size: 150%;
+    }
+
+    p {
+        font-family: 'Noto Serif KR', serif;
+        font-size: 15px;
+      }
+
+    #search { padding-left : 880px }
+    #logo { padding-left:50px; padding-top:80px }
+
+
+    </style>
+
+
+    <hr>
+<body>
+
+
+    <hr>
+
+<h1>글쓰기</h1>
+<!--<label for="id">번호</label><input type="number" disabled>-->
+<div class="container">
+    <form action="/add_board_pro" method="post">
+        <tr>
+            <th><strong>제목 : </strong></th><label for="title"></label><input type="text" placeholder="제목을 입력하세요. " name="title" required>
+        </tr>
+    <br><br>
+    <label for="name"><strong>글쓴이 : </strong></label><input type="text" placeholder="이름을 입력하세요. " name="name" required>
+    <br><br>
+    <label for="content"><strong>내용 : </strong></label>
+    <br><br>
+    <textarea name="content" placeholder="내용을 입력하세요. " cols="50" rows="10" required></textarea>
+    <br><br>
+
+    <input class="btn btn-success" type="submit", value="등록">
+    <input class="btn btn-danger" type="reset", value="reset"/>
+    <input class="btn btn-info" type="button", value="목록" onclick="location.href='/board/'">
+    </form>
+</div>
+</body>
+</html>

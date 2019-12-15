@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>oneplusone_list</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap&subset=korean" rel="stylesheet">
+
+    <style>
+    .pagination-page-info {
+        padding: .6em;
+        padding-left: 0;
+        width: 40em;
+        margin: .5em;
+        margin-left: 0;
+        font-size: 12px;
+    }
+    .pagination-page-info b {
+        color: black;
+        background: #6aa6ed;
+        padding-left: 2px;
+        padding: .1em .25em;
+        font-size: 150%;
+    }
+
+    p {
+        font-family: 'Noto Serif KR', serif;
+        font-size: 15px;
+      }
+
+    #search { padding-left : 880px }
+    #logo { padding-left:50px; padding-top:80px }
+
+
+    </style>
+
+
+    <hr>
+<style>
+    #board {width:800px; height:600px; border:1px solid black;
+                padding:50px; margin:20px auto;
+               }
+
+    .list { position: absolute;
+            bottom: 10px;
+            right: 10px;
+            }
+</style>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="container">
+            <div id="logo">
+                <a href="/">
+                    <img src="../static/image/kong/seven1.png" alt="seven" width="150">
+                </a>
+            </div>
+            <div id="search">
+                <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                    <form class="form-inline" action="/search_seven_list" novalidate autocomplete="off" method='GET'>
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" name="searchProduct">
+                        <input class="btn btn-info" id="bts" type="submit" value="검색">
+                    </form>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <ul class="nav nav-pills nav-justified">
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">편의점별
+                <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="/cu_oneplusone/1"><p>CU</p></a></li>
+                <li><a href="/gs25_oneplusone/1"><p>GS25</p></a></li>
+                <li><a href="/emart24_oneplusone/1"><p>Emart24</p></a></li>
+                <li><a href="/seven_oneplusone/1"><p>7eleven</p></a></li>
+                <li><a href="/ministop_oneplusone/1"><p>Ministop</p></a></li>
+            </ul>
+        </li>
+        <li><a href="/location_service"><p>위치서비스</p></a></li>
+        <li><a href="/board"><p>게시판</p></a></li>
+        </ul>
+        <hr>
+
+<div class="container">
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="page-header">
+            <h2>게시판</h2>
+        </div>
+
+        <div class="container" id="board">
+
+             <tr>
+                <th><storng>글번호 : &nbsp;&nbsp;</storng></th> <td> {{board_record[0][0]}}</td>
+                <td>
+
+                </td>
+
+             </tr>
+            <br>
+    <th><strong>제목 : </strong></th> <td> {{board_record[0][1]}} </td>
+            <br>
+              <tr>
+     <th><strong>작성자 : </strong></th> <td> {{board_record[0][2]}} </td>
+              </tr>
+            <br>
+              <tr>
+            <th><strong>날짜 : </strong></th> <td> {{board_record[0][4]}} </td>
+              </tr>
+            <br>
+              <tr>
+            <th><strong>조회수 : </strong></th> <td> {{board_record[0][5]}}   </td>
+              </tr>
+            <br><hr>
+            <th><strong>글내용 : </strong></th>
+            <br><hr><td> {{board_record[0][2]}} </td>
+            <p></p>
+
+
+
+
+        </div>
+
+<input type="button" value="목록" class="btn btn-info pull-right" onclick="location.href='/board/'"/>
+
+    </div>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

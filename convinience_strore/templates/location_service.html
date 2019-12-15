@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+    <title>LOCATION SERVICE</title>
+
+     <!-- 부트스트랩 연동 -->
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/style.css" media="all"/>
+
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+            <!-- stylesheets -->
+        <!-- js files -->
+    <script src="../static/js/jquery-v1.8.2.js"></script> <!-- jQuery 1.8.2 -->
+    <script src="../static/js/caroufredsel-carousel.js"></script><!-- CarouFredSel carousel plugin -->
+
+    <script>
+        function map_form_send()
+        {
+            form = document.gugunMap;
+            form.action = "/map/" + document.getElementById('selstore').value;
+            form.submit();
+        }
+
+        function clickStore(store)
+        {
+            document.getElementById('selstore').value = store;
+            document.getElementById("ifrm_content").src = "/map/" + store;
+        }
+    </script>
+
+    <style>
+        #logo { padding-top : 80px; padding-left : 50px; }
+<!--        .title { padding-top : 30px; padding-left : 200px; }-->
+        #search { padding-left : 880px }
+        #search_gu { padding-top : 50px; padding-left : 950px; }
+        #map { padding-left : 100px; padding-bottom : 200px; }
+        #copyright { padding-left : 1000px;}
+    </style>
+</head>
+
+
+<body>
+<div class="container">
+    <div class="row">
+<!--        <div class="container">-->
+            <div id="logo">
+                <a href="/">
+                    <img src="../static/image/location_service.png" alt="home" width="120">
+                </a>
+                <span>    </span>
+                <span id="title" style="font-weight : bold; font-size : xx-large; margin-left : 1.5em; ">
+                위치서비스
+                </span>
+            </div>
+
+<!--        </div>-->
+
+            <div id="search">
+                <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                    <form class="form-inline" action="/search_cu_list1" novalidate autocomplete="off" method='GET'>
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" name="searchProduct">
+    <!--                    <button class="btn btn-info" type="submit">검색</button>-->
+                        <input class="btn btn-info" id="bts" type="submit" value="검색">
+                    </form>
+                </nav>
+            </div>
+    </div>
+        <hr>
+        <ul class="nav nav-pills nav-justified">
+          <li class="active">
+              <a href="/">Home</a>
+          </li>
+          <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">편의점별
+                  <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                  <li><a href="/cu_oneplusone">CU</a></li>
+                  <li><a href="/gs25_oneplusone">GS25</a></li>
+                  <li><a href="/emart24_oneplusone">emart24</a></li>
+                  <li><a href="/seven_oneplusone">7eleven</a></li>
+                  <li><a href="/ministop_oneplusone">ministop</a></li>
+              </ul>
+          </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">행사별
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">1+1</a></li>
+                    <li><a href="#">2+1</a></li>
+                    <li><a href="#">3+1</a></li>
+                    <li><a href="#">세일상품</a></li>
+                    <li><a href="#">덤증정상품</a></li>
+                </ul>
+            </li>
+            <li><a href="#">위치서비스</a></li>
+            <li><a href="#">게시판</a></li>
+        </ul>
+        <hr>
+
+        <ul class="nav nav-pills nav-justified">
+          <li class="active">
+              <a href="#">CU</a>
+          </li>
+            <li class="active">
+              <a href="#" onclick="clickStore('gs25');">GS25</a>
+          </li>
+            <li class="active">
+              <a href="#" onclick="clickStore('emart24');">emart24</a>
+          </li>
+            <li class="active">
+              <a href="#" onclick="clickStore('7eleven');">7eleven</a>
+          </li>
+            <li class="active">
+              <a href="#" onclick="clickStore('ministop');">ministop</a>
+          </li>
+        </ul>
+
+        <div id="search_gu">
+                <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                    <form name="gugunMap" class="form-inline" novalidate autocomplete="off" method='POST' target="ifrm_content">
+                        <input type="hidden" id="selstore" value="" />
+                        <select name='gugun' onchange="map_form_send();">
+                          <option value='' selected>-- 선택 --</option>
+                          <option value='강남구'>강남구</option>
+                          <option value='강동구'>강동구</option>
+                          <option value='강북구'>강북구</option>
+                          <option value='강서구'>강서구</option>
+                          <option value='관악구'>관악구</option>
+                          <option value='광진구'>광진구</option>
+                          <option value='광진구'>구로구</option>
+                          <option value='금천구'>금천구</option>
+                          <option value='노원구'>노원구</option>
+                          <option value='도봉구'>도봉구</option>
+                          <option value='동대문구'>동대문구</option>
+                          <option value='동작구'>동작구</option>
+                          <option value='마포구'>마포구</option>
+                          <option value='서대문구'>서대문구</option>
+                          <option value='서초구'>서초구</option>
+                          <option value='성동구'>성동구</option>
+                          <option value='성북구'>성북구</option>
+                          <option value='송파구'>송파구</option>
+                          <option value='양천구'>양천구</option>
+                          <option value='영등포구'>영등포구</option>
+                          <option value='용산구'>용산구</option>
+                          <option value='은평구'>은평구</option>
+                          <option value='종로구'>종로구</option>
+                          <option value='중구'>중구</option>
+                          <option value='중랑구'>중랑구</option>
+                        </select>
+                    </form>
+                </nav>
+        </div>
+
+        <div id="map">
+            <iframe name="ifrm_content" id="ifrm_content" width="950" height="570"></iframe>
+        </div>
+
+        <hr>
+
+        <div id="copyright">
+            <p>
+                © 2019 conBEANi
+            </p>
+        </div>
+</div>
+</div>
+
+</body>
+
+</html>
