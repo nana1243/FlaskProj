@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+
+    <title>편의점 테스트 </title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Font awesome CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+          integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="static/css/style.css" media="all"/>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- Font awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"
+            integrity="sha384-4oV5EgaV02iISL2ban6c/RmotsABqE4yZxZLcYMAdG7FAPsyHYAPpywE9PJo+Khy" crossorigin="anonymous"></script>
+
+            <!-- stylesheets -->
+        <!-- js files -->
+
+
+{% block head %}
+{% endblock %}
+</head>
+<!--   conv_list는 convenient리스트 -->
+    <style>
+ #title { padding-top:30px; }
+ #conv_list { width:1000px; height: 1000px; border-radius:20px; padding-top:200px; margin:20px auto}
+ #conv_list img { display: inline-block; width:100px ; height:100px; border-radius:20px; margin:10px auto }
+ #search { padding-left : 880px }
+
+    </style>
+
+<body>
+<div class="container">
+    <div id="title">
+        <h1>편의점</h1>
+        <div id="search">
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                <form class="form-inline" action="/action_page.php">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                    <button class="btn btn-info" type="submit">검색</button>
+                </form>
+            </nav>
+        </div>
+    </div>
+    <hr>
+    <ul class="nav nav-pills nav-justified" id="menu">
+      <li class="{% if active=='home' %}active{%endif %}"><a href="/">Home</a></li>
+      <li class="dropdown {% if active=='convenient' %}active{%endif %}" >
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">편의점별
+              <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+              <li><a href="/gs25_threeplusone">GS25</a></li>
+              <li><a href="/cu">CU</a></li>
+              <li><a href="/emart">emart24</a></li>
+              <li><a href="/seven_oneplusone">7eleven</a></li>
+              <li><a href="/mini">ministop</a></li>
+          </ul>
+      </li>
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">행사별
+                <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="#">1+1</a></li>
+                <li><a href="#">2+1</a></li>
+                <li><a href="#">3+1</a></li>
+                <li><a href="#">세일상품</a></li>
+                <li><a href="#">덤증정상품</a></li>
+            </ul>
+        </li>
+        <li><a href="#">위치서비스</a></li>
+        <li class="{% if active=='board' %}active{%endif %}"><a href="/board">게시판</a></li>
+    </ul>
+    <hr>
+    <div>
+        {% block contents %}
+        {% endblock %}
+    </div>
+</div>
+</body>
+</html>

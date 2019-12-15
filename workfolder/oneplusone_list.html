@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>oneplusone_list</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+<div>
+    <h1>1+1</h1>
+    <hr>
+    <ul class="list-group">
+            <li class="list-group-item  list-group-item-danger" >
+                <span>img</span>
+                <span>품명</span>
+                <span>가격</span>
+
+
+            </li>
+        <!--  레코드 출력 -->
+            {% for i in range(0,num) %}
+            <li class="list-group-item">
+                <span><img src="../static/image/{{data}}/oneplusone/{{ oneplusone_list[i][2] }}.png"  width="150px" height="150px"></span>
+                <span>{{ oneplusone_list[i][0] }}</span>
+                <span>{{ oneplusone_list[i][1] }}</span>
+                <!-- <span>{{ oneplusone_list[i][3] }}</span> -->
+            </li>
+            {% endfor %}
+        </ul>
+
+
+
+    </div>
+    <p class="text-align">
+        <a href="/" class="btn btn-success">처음으로 이동</a>
+    </p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+
+    <style>
+    .pagination-page-info {
+        padding: .6em;
+        padding-left: 0;
+        width: 40em;
+        margin: .5em;
+        margin-left: 0;
+        font-size: 12px;
+    }
+    .pagination-page-info b {
+        color: black;
+        background: #6aa6ed;
+        padding-left: 2px;
+        padding: .1em .25em;
+        font-size: 150%;
+    }
+    #event-type{text-align:center;
+      padding: .6em;
+        padding-left: 0;
+        width: 40em;
+        margin: .5em;
+        margin-left: 0;
+        font-size: 12px;
+
+    }
+    </style>
+{% endblock %}
+
+
+
+{% block contents %}
+    <ul class="nav nav-pills nav-justified" id="event-type">
+      <li class="{% if active=='seven_oneplusone' %}active{%endif %}"><a href="/seven_oneplusone/">1+1</a></li>
+      <li class="{% if active=='seven_twoplusone' %}active{%endif %}"><a href="/seven_twoplusone/">2+1</a></li>
+      <li class="{% if active=='seven_discount' %}active{%endif %}"><a href="/seven_discount/">할인행사</a></li>
+      <li class="{% if active=='seven_dum' %}active{%endif %}"><a href="/seven_dum/">증정행사</a></li>
+
+    </ul>
+<br>
+<hr>
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        {% for item in oneplusone_list %}
+        <div class="col-xs-6 col-sm-3">
+
+            <div class="container">
+                <div class="container">
+                <div><a href="/big_image?data={{ item[2] }}"><img src="../static/image/conv_se_add/{{ item[2] }}.png"  width="100px" height="100px" class="img-thumbnail"></a></div>
+                <div><a href="/big_image?data={{ item[2] }}"><img src="../static/image/conv_se_dum/{{ item[2] }}.png"  width="100px" height="100px" class="img-thumbnail"></a></div>
+                </div>
+                    <div>{{ item[0] }}</div>
+
+            <div>{{ item[1] }}</div>
+        </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+<div class="text-center">
+    <ul class="pagination">
+        {% for i  in range(1, pagenum) %}
+            {% if i == curpage %}
+                <li class="page-item active"><a href="/seven_discount/{{i}}" class="btn btn-primary btn-lg active"><em>{{i}}</em></a></li>
+            {% else %}
+                <li class="page-item"><a href="/seven_discount/{{i}}" class="btn btn-primary btn-lg active"><em>{{i}}</em></a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+
+
+
+
+{% endblock %}
+
